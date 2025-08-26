@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestor de Contactos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 900px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        color: #333;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      input,
+      button {
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+      button {
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+      }
+      button.editar {
+        background-color: #ffc107;
+      }
+      button.borrar {
+        background-color: #dc3545;
+      }
+      button.ver {
+        background-color: #28a745;
+      }
+      button.volver {
+        background-color: #6c757d;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .contacto-info {
+        text-align: center;
+      }
+      .contacto-info img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="titulo-principal">Gestor de Contactos</h1>
+
+      <h2 id="titulo-formulario">Agregar Contacto</h2>
+      <form id="formulario-contacto">
+        <input type="hidden" id="id-contacto-oculto" />
+        <input type="text" id="nombre" placeholder="Nombre completo" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input
+          type="tel"
+          id="telefono"
+          placeholder="Teléfono"
+          pattern="[0-9]{10}"
+          title="Ingresa 10 dígitos numéricos"
+        />
+        <input type="url" id="url-imagen" placeholder="URL de la imagen" />
+        <button type="submit" id="boton-guardar">Guardar Contacto</button>
+      </form>
+
+      <div id="vista-tabla">
+        <h2>Lista de Contactos</h2>
+        <p id="mensaje-vacio" style="display: none">
+          Aún no hay contactos disponibles.
+        </p>
+        <div id="contenedor-tabla">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpo-tabla"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="vista-detalle" style="display: none">
+        <h2>Detalles del Contacto</h2>
+        <div class="contacto-info">
+          <img id="detalle-imagen" src="" alt="Foto de perfil del contacto" />
+          <p><strong>Nombre:</strong> <span id="detalle-nombre"></span></p>
+          <p><strong>Email:</strong> <span id="detalle-email"></span></p>
+          <p><strong>Teléfono:</strong> <span id="detalle-telefono"></span></p>
+        </div>
+        <button onclick="volverALaLista()" class="volver">
+          Volver a la lista
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
